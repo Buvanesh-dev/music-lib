@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Phosphor Icons for premium icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="ph-fill ph-spotify-logo"></i>
+                <span>Spotify</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active"><i class="ph ph-house"></i> Home</a>
+                <a href="#"><i class="ph ph-magnifying-glass"></i> Search</a>
+                <a href="#"><i class="ph ph-books"></i> Your Library</a>
+            </nav>
+            <div class="nav-links secondary-nav">
+                <a href="#"><i class="ph-fill ph-plus-square"></i> Create Playlist</a>
+                <a href="#"><i class="ph-fill ph-heart"></i> Liked Songs</a>
+            </div>
+            <div class="divider"></div>
+            <div class="playlist-list">
+                <p>Chill Vibes</p>
+                <p>Coding Focus</p>
+                <p>Daily Mix 1</p>
+                <p>Discover Weekly</p>
+                <p>Top Hits 2025</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="nav-arrows">
+                    <button class="nav-btn"><i class="ph ph-caret-left"></i></button>
+                    <button class="nav-btn"><i class="ph ph-caret-right"></i></button>
+                </div>
+                <div class="user-profile">
+                    <button class="upgrade-btn">Explore Premium</button>
+                    <button class="profile-btn"><i class="ph ph-user"></i></button>
+                </div>
+            </header>
+
+            <div class="playlist-header">
+                <img src="https://picsum.photos/seed/playlist/300/300" alt="Playlist Cover" class="playlist-cover">
+                <div class="playlist-info">
+                    <span class="playlist-type">Playlist</span>
+                    <h1 class="playlist-title">Your Mix</h1>
+                    <p class="playlist-description">A custom mix of tracks provided by you.</p>
+                    <div class="playlist-stats">
+                        <img src="https://picsum.photos/seed/user/30/30" alt="User" class="creator-avatar">
+                        <span class="creator-name">Antigravity</span>
+                        <span class="dot">•</span>
+                        <span id="total-tracks-count">0 songs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="playlist-controls">
+                <button class="btn-play-large" id="main-play-btn"><i class="ph-fill ph-play"></i></button>
+                <button class="btn-icon"><i class="ph ph-heart"></i></button>
+                <button class="btn-icon"><i class="ph ph-dots-three"></i></button>
+            </div>
+
+            <div class="tracks-container">
+                <div class="tracks-header">
+                    <div class="col-hashtag">#</div>
+                    <div class="col-title">Title</div>
+                    <div class="col-album">Album</div>
+                    <div class="col-date">Date added</div>
+                    <div class="col-duration"><i class="ph ph-clock"></i></div>
+                </div>
+                <div class="divider"></div>
+                <div class="tracks-list" id="tracks-list">
+                    <!-- Tracks will be dynamically injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Playback Bar -->
+    <div class="playback-bar">
+        <div class="now-playing">
+            <img src="https://picsum.photos/seed/empty/60/60" alt="Cover" id="current-cover" class="current-cover hidden">
+            <div class="track-info">
+                <div class="track-name" id="current-title">--</div>
+                <div class="track-artist" id="current-artist">--</div>
+            </div>
+            <button class="btn-icon small hidden" id="like-btn"><i class="ph ph-heart"></i></button>
+        </div>
+
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="btn-icon"><i class="ph ph-shuffle"></i></button>
+                <button class="btn-icon" id="prev-btn"><i class="ph-fill ph-skip-back"></i></button>
+                <button class="btn-play-small" id="play-pause-btn"><i class="ph-fill ph-play" id="play-icon"></i></button>
+                <button class="btn-icon" id="next-btn"><i class="ph-fill ph-skip-forward"></i></button>
+                <button class="btn-icon"><i class="ph ph-repeat"></i></button>
+            </div>
+            <div class="progress-container">
+                <span class="time-current" id="current-time">0:00</span>
+                <div class="progress-bar-bg" id="progress-container">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+                <span class="time-total" id="total-time">0:00</span>
+            </div>
+        </div>
+
+        <div class="volume-controls">
+            <button class="btn-icon"><i class="ph ph-microphone-stage"></i></button>
+            <button class="btn-icon"><i class="ph ph-queue"></i></button>
+            <button class="btn-icon"><i class="ph ph-devices"></i></button>
+            <button class="btn-icon" id="mute-btn"><i class="ph ph-speaker-high" id="volume-icon"></i></button>
+            <div class="progress-bar-bg volume-bar" id="volume-container">
+                <div class="progress-bar-fill" id="volume-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audio-player"></audio>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
